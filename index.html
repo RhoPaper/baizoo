@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>摆摆放屁动物园-官方网站</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content {
+            color: white;
+            font-size: 2em;
+            opacity: 0;
+            /* 初始状态为完全透明 */
+            transition: opacity 2s;
+            /* 定义过渡效果，持续时间为0.5秒 */
+        }
+
+        /* 当背景图片加载完成后，应用以下样式 */
+        body.loaded .content {
+            opacity: 1;
+            /* 目标状态为完全不透明 */
+        }
+
+        .font1 {
+            color: black;
+            height: 100%;
+            display: grid;
+            place-items: center;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var images = [
+                'img/bg1.jpg', // 图片文件名
+                'img/bg2.jpg',
+                'img/bg3.jpg',
+                'img/bg4.jpg',
+                'img/bg5.jpg',
+                'img/bg6.jpg',
+                'img/bg7.jpg',
+                // ... 可以添加更多图片
+            ];
+
+            // 生成一个随机索引
+            var randomIndex = Math.floor(Math.random() * images.length);
+
+            // 获取随机图片并设置背景
+            var randomImage = images[randomIndex];
+            var img = new Image();
+
+            // 图片加载完成后，设置背景并开始文字渐显效果
+            img.onload = function () {
+                document.body.style.backgroundImage = 'url(' + randomImage + ')';
+                document.body.classList.add('loaded');
+            };
+
+            // 设置图片的src属性以开始加载
+            img.src = randomImage;
+        });
+    </script>
+</head>
+
+<body>
+    <div class="content">
+        <h2 class="font1">欢迎来到 摆摆放屁动物园™ !</h2>
+        <h6 class="font1">刷新页面即可随机查看不同摆摆写真</h6>
+    </div>
+</body>
+
+</html>
